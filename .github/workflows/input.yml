@@ -1,0 +1,20 @@
+# https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#example-of-onworkflow_callinputs
+
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
+on:
+    workflow_dispatch:
+        inputs:
+            username:
+                description: 'A username passed from the caller workflow'
+                default: 'john-doe'
+                required: false
+                type: string
+
+jobs:
+    print-username:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Print the input name to STDOUT
+              run: echo The username is ${{ inputs.username }}
